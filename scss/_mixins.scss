@@ -1,0 +1,13 @@
+@import "variables";
+
+@mixin fontStyle($size, $spacing, $weight: 400, $color: $mainFontColor) {
+  font-size: $size;
+  letter-spacing: $spacing;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin hoverStyle {
+  cursor: pointer;
+  background-color: darken($color: $mainColor, $amount: 10%);
+}
