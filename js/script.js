@@ -1,8 +1,8 @@
 //TASK 3
-import formValidation from './modules/formValidation.js';
+import formValidation from './tasks/formValidation.js';
 
 // TASK 4
-import playVideo from './modules/playVideo.js';
+import playVideo from './tasks/playVideo.js';
 
 formValidation.init();
 
