@@ -1,8 +1,6 @@
 /* eslint-disable max-len */
 const button = document.getElementById('try_btn');
-const inputArr = [...document.querySelectorAll('.content-block-form-input')];
 const form = document.getElementById('form');
-const message = document.getElementById('form-message');
 
 const name = document.getElementById('name');
 const mail = document.getElementById('mail');
@@ -13,23 +11,13 @@ const mailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\
 const passwordRegExp = /(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/;
 
 function isDataValid(regExp, input) {
-  const result = regExp.test(input.value);
-
-  if (!result) {
-    message.innerHTML += `Please check ${input.id}. `;
-  }
-}
-
-function checkInputs() {
-  message.innerHTML = '';
-
-  isDataValid(nameRegExp, name);
-  isDataValid(mailRegExp, mail);
-  isDataValid(passwordRegExp, password);
+  return regExp.test(input.value);
 }
 
 function validateForm(e) {
-  const check = inputArr.every((el) => el.value !== '');
+  const check = isDataValid(nameRegExp, name)
+    && isDataValid(mailRegExp, mail)
+    && isDataValid(passwordRegExp, password);
 
   check
     ? button.classList.remove('disabled')
@@ -39,7 +27,6 @@ function validateForm(e) {
 const formValidation = {
   init: () => {
     form.addEventListener('submit', (e) => e.preventDefault());
-    button.addEventListener('click', checkInputs);
     form.addEventListener('input', validateForm);
   },
 };

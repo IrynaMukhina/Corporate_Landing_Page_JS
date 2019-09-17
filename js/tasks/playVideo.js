@@ -6,7 +6,7 @@ const video = document.getElementById('video');
 const play = document.getElementById('play');
 const icon = document.getElementById('header-icon');
 
-function startVideo() {
+function toogleVideo() {
   if (video.paused) {
     handler.toggleClass(icon, 'header-item-pause', 'header-item-play');
     video.play();
@@ -18,7 +18,7 @@ function startVideo() {
 
 const playVideo = {
   init: () => {
-    play.addEventListener('click', startVideo);
+    play.addEventListener('click', toogleVideo);
   },
 };
 
